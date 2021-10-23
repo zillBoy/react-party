@@ -3,34 +3,41 @@ import ReactParty from './components/ReactParty/ReactParty'
 
 const App = () => {
 
+  const [show, setShow] = useState(false)
+  const [showParty, setShowParty] = useState(false)
+  const [showEmoji, setShowEmoji] = useState(false)
+
   return (
     <div>
       <h1>React Party</h1>
-      <button>Show Party</button>
-      <ReactParty
-        onStart={() => console.log('This is a different thing!')}
-        onStarted={() => console.log('The animation is started boi!')}
-        onCompleted={() => console.log('The animation is completed baby boi!')}
+      <button onClick={() => setShow(true)}>Show Party 🔥</button>
+      <button onClick={() => setShowParty(true)}>Show Party 🎉</button>
+      <button onClick={() => setShowEmoji(true)}>Show Party 🥳</button>
+      {show && <ReactParty
+        // onStart={onStartAnimation}
+        // onStarted={() => console.log('animation is started!')}
+        onCompleted={() => setShow(false)}
         showDefault={true}
-        limit={100} 
+        limit={20} 
         content={'🔥'} 
-        duration={2000} // seconds
-        delay={1000} // milisecond
-      />
-      <ReactParty 
-        showDefault={true} 
-        limit={10} 
+        duration={3000} // seconds
+        // delay={3000} // milisecond
+      />}
+      {showParty && <ReactParty
+        onCompleted={() => setShowParty(false)}
+        showDefault={true}
+        limit={20} 
         content={'🎉'} 
-        duration={2000} // seconds
-        delay={2000} // milisecond
-      />
-      <ReactParty 
-        showDefault={true} 
-        limit={50} 
-        content={'👽'} 
-        duration={2000} // seconds
-        delay={2000} // milisecond
-      />
+        duration={3000}
+      />}
+      {showEmoji && <ReactParty
+        onCompleted={() => setShowEmoji(false)}
+        showDefault={true}
+        limit={20} 
+        content={'🥳'}
+        duration={2000}
+        delay={10000}
+      />}
     </div>
   )
 }
