@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './ReactParty.css'
 
-const ReactParty = ({ delay, duration, showDefault = true, limit, content, onStart, onStarted, onCompleted }) => {
+const ReactParty = ({ delay = 0, duration, showDefault = true, limit, content, size, onStart, onStarted, onCompleted }) => {
     
     const [partyShowDefault, setPartyShowDefault] = useState(showDefault)
     const [animationDuration, setAnimationDuration] = useState(duration)
@@ -19,9 +19,11 @@ const ReactParty = ({ delay, duration, showDefault = true, limit, content, onSta
 
     const onAnimationCompleted = (onCompleted = () => {}, duration = 0) => {
         setTimeout(() => {
-            setPartyShowDefault(false)
-            return onCompleted()
-        }, [duration * 1.5])
+            setTimeout(() => {
+                setPartyShowDefault(false)
+                return onCompleted()
+            }, [duration * 1.5])
+        }, [delay])
     }
 
     const onDurationAnimation = (duration = 0) => {
@@ -52,7 +54,7 @@ const ReactParty = ({ delay, duration, showDefault = true, limit, content, onSta
             {showAnimation ? <>
                 {Array(limit).fill('').map((e, i) => (
                     <React.Fragment key={i}>
-                        <PartyList duration={animationDuration} delay={animationDelay} content={content} />
+                        <PartyList duration={animationDuration} delay={animationDelay} content={content} size={size} />
                     </React.Fragment>
                 ))}
             </> : <></>}
@@ -60,20 +62,22 @@ const ReactParty = ({ delay, duration, showDefault = true, limit, content, onSta
     )
 }
 
-const PartyList = ({ duration= 0, delay = 0, content }) => {
+const PartyList = ({ duration= 0, size = 10, content }) => {
     
     const durationAnimation = duration / 1000
     const [style, setStyle] = useState({})
+    const [contentStyle, setContentStyle] = useState({})
 
-    useEffect(() => {
+    useEffect(() => {        
         let left = Math.floor(Math.random() * 90)
         let animationDuration = (Math.random() * durationAnimation).toFixed(durationAnimation)
         setStyle({display: 'block', position: 'absolute', left: `${left}%`, animation: `bottomToTop 2s ease`, animationDelay: `${animationDuration}s`})
+        setContentStyle({fontSize: `${size}px` })
     }, [])
     
     return (
         <div style={style} id='party__mainContainer' className='mainContainer'>
-            <p className='content'>{content}</p>
+            <p style={contentStyle}>{content}</p>
         </div>
     )
 }

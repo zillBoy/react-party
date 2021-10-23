@@ -22,6 +22,7 @@ const App = () => {
         content={'🔥'} 
         duration={3000} // seconds
         // delay={3000} // milisecond
+        size={26}
       />}
       {showParty && <ReactParty
         onCompleted={() => setShowParty(false)}
@@ -36,7 +37,8 @@ const App = () => {
         limit={20} 
         content={'🥳'}
         duration={2000}
-        delay={10000}
+        delay={1000}
+        size={46}
       />}
     </div>
   )
