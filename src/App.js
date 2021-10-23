@@ -18,25 +18,26 @@ const App = () => {
         // onStarted={() => console.log('animation is started!')}
         onCompleted={() => setShow(false)}
         showDefault={true}
-        limit={20} 
+        limit={200} 
         content={'🔥'} 
-        duration={3000} // seconds
+        duration={4000} // seconds
         // delay={3000} // milisecond
-        size={26}
+        size={36}
       />}
       {showParty && <ReactParty
         onCompleted={() => setShowParty(false)}
         showDefault={true}
-        limit={20} 
+        limit={2}
         content={'🎉'} 
         duration={3000}
+        size={90}
       />}
       {showEmoji && <ReactParty
         onCompleted={() => setShowEmoji(false)}
         showDefault={true}
-        limit={20} 
+        limit={200} 
         content={'🥳'}
-        duration={2000}
+        duration={10000}
         delay={1000}
         size={46}
       />}

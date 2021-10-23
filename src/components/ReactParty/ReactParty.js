@@ -5,7 +5,6 @@ const ReactParty = ({ delay = 0, duration, showDefault = true, limit, content, s
     
     const [partyShowDefault, setPartyShowDefault] = useState(showDefault)
     const [animationDuration, setAnimationDuration] = useState(duration)
-    const [animationDelay, setAnimationDelay] = useState(0)
     const [showAnimation, setShowAnimation] = useState(false)
 
     const onAnimationStart = (onStart = () => {}) => {
@@ -31,11 +30,7 @@ const ReactParty = ({ delay = 0, duration, showDefault = true, limit, content, s
     }
 
     const onDelayAnimation = (delay = 0) => {
-        
-        console.log('delay: ', delay)
-
         setTimeout(() => {
-            console.log('now called!')
             setShowAnimation(true)
             onAnimationStart(onStart)
             onAnimationStarted(onStarted)
@@ -48,13 +43,13 @@ const ReactParty = ({ delay = 0, duration, showDefault = true, limit, content, s
     }, [])
 
     if (!partyShowDefault) return <></>
-    
+
     return (
         <>
             {showAnimation ? <>
                 {Array(limit).fill('').map((e, i) => (
                     <React.Fragment key={i}>
-                        <PartyList duration={animationDuration} delay={animationDelay} content={content} size={size} />
+                        <PartyList duration={animationDuration} content={content} size={size} />
                     </React.Fragment>
                 ))}
             </> : <></>}

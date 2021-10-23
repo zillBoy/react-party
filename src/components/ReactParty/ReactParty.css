@@ -5,10 +5,6 @@
     z-index: 999;
 }
 
-.mainContainer {
-    width: 55px;
-}
-
 @keyframes bottomToTop {
     from {top: 120%; opacity: 0.5;}
     to {top: -20%; opacity: 1;}
