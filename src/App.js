@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ReactParty from './components/ReactParty/ReactParty'
 
 const App = () => {
+
+  const [toggle, setToggle] = useState(false)
+
+  const showPartyHandler = () => {
+    setToggle(true)
+  }
+  
   return (
     <div>
-      <p>This is the react party component</p>
-      <p>React-Party</p>
+      <h1>React Party</h1>
+      <button onClick={showPartyHandler}>Show Party</button>
+      <ReactParty
+        showDefault={true}
+        limit={10} 
+        content={'🔥'} 
+        delay={2000} // milisecond
+      />
+      <ReactParty 
+        showDefault={true} 
+        limit={10} 
+        content={'🎉'} 
+        delay={2000} // milisecond
+      />
+      <ReactParty 
+        showDefault={true} 
+        limit={10} 
+        content={'👽'} 
+        delay={2000} // milisecond
+      />
     </div>
   )
 }
