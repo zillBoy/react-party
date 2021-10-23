@@ -57,7 +57,7 @@ const ReactParty = ({ delay = 0, duration, showDefault = true, limit, content, s
     )
 }
 
-const PartyList = ({ duration= 0, size = 10, content }) => {
+const PartyList = ({ duration= 0, size = 40, content }) => {
     
     const durationAnimation = duration / 1000
     const [style, setStyle] = useState({})

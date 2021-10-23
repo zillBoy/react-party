@@ -27,10 +27,10 @@ const App = () => {
       {showParty && <ReactParty
         onCompleted={() => setShowParty(false)}
         showDefault={true}
-        limit={2}
+        limit={32}
         content={'🎉'} 
         duration={3000}
-        size={90}
+        size={40}
       />}
       {showEmoji && <ReactParty
         onCompleted={() => setShowEmoji(false)}
